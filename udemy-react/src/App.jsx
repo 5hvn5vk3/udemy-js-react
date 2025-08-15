@@ -5,9 +5,10 @@ import "./App.css";
 import { ColorfulMessage } from "./components/ColorfulMessage";
 
 export const App = () => {
-  const [num, setNum] = useState(0);
+  const [num, setNum] = useState(0); // フックは一番上でしか呼べない
   const onClickCountUp = () => {
-    setNum(num + 1); // 先生曰く「ステートの更新を検知してもう一度コンポーネントが上から評価されているようなイメージ」
+    setNum((prev) => prev + 1); // 関数を渡すと今の引数の値が設定できる。次の行と合わせて2ずつ増えていくような動きをさせることができる。
+    setNum((prev) => prev + 1);
   };
   return (
     <>
