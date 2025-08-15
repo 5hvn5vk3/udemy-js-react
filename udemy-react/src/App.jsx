@@ -7,7 +7,7 @@ import { ColorfulMessage } from "./components/ColorfulMessage";
 export const App = () => {
   const [num, setNum] = useState(0);
   const onClickCountUp = () => {
-    setNum(num + 1);
+    setNum(num + 1); // 先生曰く「ステートの更新を検知してもう一度コンポーネントが上から評価されているようなイメージ」
   };
   return (
     <>
