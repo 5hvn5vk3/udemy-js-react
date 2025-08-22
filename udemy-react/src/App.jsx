@@ -20,13 +20,12 @@ export const App = () => {
     setIsSHowFace(!isSHowFace);
   };
 
-/* ここにこのように書くと再レンダリングが無限に起こってしまい、無限ループに陥る
+
   if (num % 3 === 0){
-    setIsSHowFace(true);
+    isShowFace || setIsSHowFace(true); // isShowFace（左側）がtureのときに処理を終了して右側に進む
   } else {
-    setIsSHowFace(false);
+    isShowFace && setIsSHowFace(false);
   };
-*/
 
 
 
