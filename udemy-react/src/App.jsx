@@ -13,12 +13,23 @@ export const App = () => {
 
   const onClickCountUp = () => {
     setNum((prev) => prev + 1); // 関数を渡すと今の引数の値が設定できる。次の行と合わせて2ずつ増えていくような動きをさせることができる。
-    setNum((prev) => prev + 1);
+    // setNum((prev) => prev + 1);
   };
 
   const onClickToggle = () => {
     setIsSHowFace(!isSHowFace);
-  }
+  };
+
+/* ここにこのように書くと再レンダリングが無限に起こってしまい、無限ループに陥る
+  if (num % 3 === 0){
+    setIsSHowFace(true);
+  } else {
+    setIsSHowFace(false);
+  };
+*/
+
+
+
   return (
     <>
       <h1 style = {{color: "red"}}>こんにちは！</h1>
