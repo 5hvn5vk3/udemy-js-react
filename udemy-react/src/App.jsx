@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -9,7 +10,7 @@ import { ColorfulMessage } from "./components/ColorfulMessage";
 export const App = () => {
   console.log("--App--"); // 開発時（StrictMode）はレンダリングが2回走る
   const [num, setNum] = useState(0); // フックは一番上でしか呼べない
-  const [isSHowFace, setIsSHowFace] = useState(true);
+  const [isShowFace, setIsShowFace] = useState(true);
 
   const onClickCountUp = () => {
     setNum((prev) => prev + 1); // 関数を渡すと今の引数の値が設定できる。次の行と合わせて2ずつ増えていくような動きをさせることができる。
@@ -17,16 +18,22 @@ export const App = () => {
   };
 
   const onClickToggle = () => {
-    setIsSHowFace(!isSHowFace);
+    setIsShowFace(!isShowFace);
   };
 
 
-  if (num % 3 === 0){
-    isShowFace || setIsSHowFace(true); // isShowFace（左側）がtureのときに処理を終了して右側に進む
-  } else {
-    isShowFace && setIsSHowFace(false);
-  };
+  useEffect(() => {
+    console.log("--useEffect--");
+    if (num > 0) {
+      if (num % 3 === 0){
+        isShowFace || setIsShowFace(true);
+      } else {
+        isShowFace && setIsShowFace(false);
+      };
+    };
+  }, [num]);
 
+  
 
 
   return (
@@ -38,7 +45,7 @@ export const App = () => {
       <p>{num}</p>
 
       <button onClick ={onClickToggle}>on/off</button>
-      {isSHowFace && <p>（´・ω・`）</p>}
+      {isShowFace && <p>（´・ω・`）</p>}
     </>
   );  
 };

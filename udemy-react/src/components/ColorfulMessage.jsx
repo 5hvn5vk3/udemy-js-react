@@ -1,5 +1,5 @@
 export const ColorfulMessage = ({color, children}) => { // 括弧の中で分割代入 {color, children} = props
-    console.log("--ColorfulMessage--");
+    console.log("--ColorfulMess--");
     const contentStyleA = {
         color, // 省略記法
         fontSize: "18px",
