@@ -8,6 +8,9 @@ import "./Todo.css";
 
 export const Todo = () => {
 
+  const [incompleteTodos, setIncompleteTodos] = useState(["TODOです1", "TODOです2"])
+  const [completeTodos, setCompleteTodos] = useState(["TODOでした1", "TODOでした2"])
+
   return (
     <>
       <div className="input-area">
@@ -18,30 +21,31 @@ export const Todo = () => {
       <div className="incomplete-area">
         <p className="title">未完了のTODO</p>
         <ul>
-          <li>
-            <p className="todo-item">TODOです</p>
-            <button>完了</button>
-            <button>削除</button>
-          </li>
-          <li>
-            <p className="todo-item">TODOです</p>
-            <button>完了</button>
-            <button>削除</button>
-          </li>
+          {incompleteTodos.map((todo) => (
+            
+            <li key={todo}> {/*今回は簡易的にtodoをkeyにしているが本当は一意的なIDがあるのが望ましい*/}
+              <div className="list-row">
+                <p className="todo-item">{todo}</p>
+                <button>完了</button>
+                <button>削除</button>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
 
       <div className="complete-area">
         <p className="title">完了のTODO</p>
         <ul>
-          <li>
-            <p className="todo-item">TODOでした</p>
-            <button>戻す</button>
-          </li>
-          <li>
-            <p className="todo-item">TODOでした</p>
-            <button>戻す</button>
-          </li>
+          {completeTodos.map((todo) => (
+            <li key={todo}>
+              <div className="list-row">
+                <p className="todo-item">{todo}</p>
+                <button>完了</button>
+                <button>削除</button>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </>
