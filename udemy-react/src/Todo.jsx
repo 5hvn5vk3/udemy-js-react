@@ -8,14 +8,23 @@ import "./Todo.css";
 
 export const Todo = () => {
 
+  const [todoText, setTodoText] = useState("");
   const [incompleteTodos, setIncompleteTodos] = useState(["TODOです1", "TODOです2"])
   const [completeTodos, setCompleteTodos] = useState(["TODOでした1", "TODOでした2"])
+
+  const onChangeTodoText = (event) => setTodoText(event.target.value); // 実際のアプリケーションではフォーム・ライブラリを使う
+  const onClickAdd = () => {
+    if (todoText === "") return;
+    const newTodos = [...incompleteTodos, todoText];
+    setIncompleteTodos(newTodos);
+    setTodoText("");
+  };
 
   return (
     <>
       <div className="input-area">
-        <input placeholder="TODOを入力"></input>
-        <button>追加</button>
+        <input placeholder="TODOを入力" value={todoText} onChange = {onChangeTodoText}></input>
+        <button onClick = {onClickAdd}>追加</button>
       </div>
 
       <div className="incomplete-area">
