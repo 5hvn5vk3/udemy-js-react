@@ -18,9 +18,6 @@ export const Todo = () => {
 
       <div>
         <p>未完了のTODO</p>
-      </div>
-
-      <div>
         <ul>
           <li>
             <p>TODOです</p>
@@ -31,6 +28,20 @@ export const Todo = () => {
             <p>TODOです</p>
             <button>完了</button>
             <button>削除</button>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p>完了のTODO</p>
+        <ul>
+          <li>
+            <p>TODOでした</p>
+            <button>戻す</button>
+          </li>
+          <li>
+            <p>TODOでした</p>
+            <button>戻す</button>
           </li>
         </ul>
       </div>
