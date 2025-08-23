@@ -24,6 +24,14 @@ export const Todo = () => {
     newTodos.splice(index, 1);
     setIncompleteTodos(newTodos);
   };
+  const onClickComplete = (index) => {
+    const newIncompleteTodos = [...incompleteTodos];
+    newIncompleteTodos.splice(index, 1);
+
+    const newCcompleteTodos = [...completeTodos, incompleteTodos[index]];
+    setIncompleteTodos(newIncompleteTodos);
+    setCompleteTodos(newCcompleteTodos);
+  };
 
   return (
     <>
@@ -40,7 +48,7 @@ export const Todo = () => {
             <li key={todo}> {/*今回は簡易的にtodoをkeyにしているが本当は一意的なIDがあるのが望ましい*/}
               <div className="list-row">
                 <p className="todo-item">{todo}</p>
-                <button>完了</button>
+                <button onClick={() => onClickComplete(index)}>完了</button>
                 <button onClick={() => onClickDelete(index)}>削除</button> {/*単に onClickDelete(index) とだけ書くと読み込み時に毎回それが実行されてしまう*/}
               </div>
             </li>
